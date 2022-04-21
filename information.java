@@ -2,7 +2,17 @@ package Login;
 import java.util.*;
 
 enum validation {
-	SUCCESS,FAILURE;
+	SUCCESS("Successfull"),FAILURE("Unsuccessfull");
+	
+	private String action;
+	
+	public String getAction() {
+		return this.action;
+	}
+	
+	private validation(String action){
+		this.action = action;
+	}
 }
 public class information {
 	static int identity_number=000;
@@ -51,7 +61,7 @@ public class information {
 		while(iterator.hasNext()) {
 			int key = (int)iterator.next();
 			if(candidate_name.equals(candidate.get(key)) &&  identity_number == key){
-				System.out.println("LOGIN "+validation.SUCCESS);
+				System.out.println("LOGIN "+validation.SUCCESS.getAction());
 				c=0;
 				candidate_validation.put(candidate_name, validation.SUCCESS.name());
 				break;
@@ -61,7 +71,7 @@ public class information {
 			}
 		}
 		if(c==1) {
-		System.out.println("LOGIN "+validation.FAILURE);
+		System.out.println("LOGIN "+validation.FAILURE.getAction());
 		}
 	}
 	public void update_candidate_information(int identity_number) {
